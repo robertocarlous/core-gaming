@@ -38,7 +38,7 @@ const StartScreen: React.FC = () => {
           Start
           <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent rounded-full pointer-events-none"></div>
         </div>
-        <div className="text-white font-bold items-center justify-center space-x-2 z-40 ml-9 flex bottom-2 pt-[100px]">
+        <div className="text-white font-bold items-center justify-center space-x-2 z-40 ml-14 flex bottom-2 pt-[100px]">
           <span>Product of</span>
           <Image
             src={Logo}

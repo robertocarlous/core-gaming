@@ -1,11 +1,9 @@
 "use client";
 
-const DesktopLeaderboard: React.FC = () => {
-  return (
-    <div className="relative flex min-h-screen w-screen bg-[#030B1F] text-white">
-      HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    </div>
-  );
+import BackgroundImgWithLogo from "@/component/BackgroundImgWithLogo";
+
+const Home: React.FC = () => {
+  return <BackgroundImgWithLogo>HAAAA</BackgroundImgWithLogo>;
 };
 
-export default DesktopLeaderboard;
+export default Home;
