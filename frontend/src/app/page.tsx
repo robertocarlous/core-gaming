@@ -1,4 +1,4 @@
-import StartScreen from "./pages/StartScreen";
+import StartScreen from "./StartScreen/page"
 
 export default function Home() {
   return <StartScreen />;
