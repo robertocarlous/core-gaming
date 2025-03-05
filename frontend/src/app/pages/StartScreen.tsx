@@ -1,17 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Logo from "../assets/BREEVS_logo_1.png";
-import Man from "../assets/RR_LOGO_1.png";
+import BackgroundImg from "../component/backgroundImg";
 import Russian from "../assets/RR_LOGO_2_1.png";
+import Logo from "../assets/BREEVS_logo_1.png";
 
 const StartScreen: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen relative h-screen w-screen bg-[#030B1F]">
-      <div
-        className="absolute inset-0 bg-contain bg-center bg-no-repeat opacity-12 "
-        style={{ backgroundImage: `url(${Man.src})` }}
-      ></div>
+    <BackgroundImg>
       <Image
         src={Russian}
         alt="Russian Logo"
@@ -28,7 +24,7 @@ const StartScreen: React.FC = () => {
           className="w-24 opacity-80 brightness-150 contrast-125"
         />
       </div>
-    </div>
+    </BackgroundImg>
   );
 };
 
