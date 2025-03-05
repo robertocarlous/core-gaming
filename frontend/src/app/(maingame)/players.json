@@ -1,0 +1,33 @@
+[
+    {
+      "name": "Alice Johnson",
+      "tokens": 150,
+      "gamesPlayed": 20,
+      "gamesWon": 12
+    },
+    {
+      "name": "David Smith",
+      "tokens": 120,
+      "gamesPlayed": 25,
+      "gamesWon": 15
+    },
+    {
+      "name": "Emma Brown",
+      "tokens": 180,
+      "gamesPlayed": 30,
+      "gamesWon": 20
+    },
+    {
+      "name": "Michael Lee",
+      "tokens": 90,
+      "gamesPlayed": 15,
+      "gamesWon": 10
+    },
+    {
+      "name": "Sophia Wilson",
+      "tokens": 200,
+      "gamesPlayed": 40,
+      "gamesWon": 22
+    }
+  ]
+  

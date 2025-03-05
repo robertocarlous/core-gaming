@@ -64,11 +64,15 @@
 // import BackgroundImg from "../component/BackgroundImg";
 // import Logo from "../assets/BREEVS_logo_1.png";
 // import Russian from "../assets/RR_LOGO_2_1.png";
+import PlayersList from "./PlayersList"; // Import the PlayersList component
+
 
 const DesktopLeaderboard: React.FC = () => {
   return (
-    <div className="relative flex min-h-screen w-screen bg-[#030B1F] text-white">
-      HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    <div className="relative flex flex-col items-center min-h-screen w-screen bg-[#030B1F] text-white p-6">
+      {/* HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */}
+      {/* <h1 className="text-3xl font-bold mb-6">Leaderboard</h1> */}
+      <PlayersList /> {/* Render the PlayersList inside */}
     </div>
   );
 };
