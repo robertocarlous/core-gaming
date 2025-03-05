@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { ReactNode } from "react";
 import Man from "../assets/RR_LOGO_1.png";
+import Russian from "../assets/RR_LOGO_2_1.png"
 
 interface BackgroundImgProps {
   children: ReactNode;
@@ -14,7 +16,8 @@ const BackgroundImg: React.FC<BackgroundImgProps> = ({ children }) => {
         className="absolute inset-0 bg-contain bg-center bg-no-repeat opacity-12"
         style={{ backgroundImage: `url(${Man.src})` }}
       ></div>
-      <div className="relative z-10">{children}</div>
+      <Image src={Russian} alt="Russian" className="absolute left-0 top-0"/>
+      {children}
     </div>
   );
 };
