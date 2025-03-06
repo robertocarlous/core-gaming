@@ -1,9 +1,9 @@
 "use client";
 
-import BackgroundImgWithLogo from "@/component/BackgroundImgWithLogo";
+import BackgroundImgBlur from "@/component/BackgroundBlur";
 
 const GameScreen: React.FC = () => {
-  return <BackgroundImgWithLogo>HAAAA</BackgroundImgWithLogo>;
+  return <BackgroundImgBlur></BackgroundImgBlur>;
 };
 
 export default GameScreen;

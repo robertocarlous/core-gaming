@@ -2,7 +2,9 @@
 import { Open_Sans } from "next/font/google";
 import Image from "next/image";
 import Logo from "../../../assets/RR_LOGO_1.png";
-import BackgroundImgWithLogo from "@/component/BackgroundImgWithLogo";
+import { useState } from "react";
+import StakeModal from "./StakeModal";
+import BackgroundImgBlur from "@/component/BackgroundBlur";
 
 const openSans = Open_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 const stakes = [
@@ -23,8 +25,16 @@ const stakes = [
 ];
 
 const GameList = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [stakeAmount, setStakeAmount] = useState("");
+
+  const handleOpenModal = (amount: string) => {
+    setStakeAmount(amount);
+    setIsModalOpen(true);
+  };
+
   return (
-    <BackgroundImgWithLogo>
+    <BackgroundImgBlur>
       <div className={`${openSans.className} relative w-full min-h-screen`}>
         <div className="fixed top-0 rounded-lg z-50 right-[36%] mt-2 py-1 px-15 transition-all duration-300 bg-[#030b1f]">
           <h2 className="text-white text-2xl mb-1 font-bold text-center">
@@ -44,6 +54,7 @@ const GameList = () => {
                 key={index}
                 className="bg-[#191F57CF] p-6 rounded-lg shadow-lg text-center border border-gray-700   transition-transform duration-150 ease-in-out 
   hover:scale-105 active:scale-95 cursor-pointer"
+                onClick={() => handleOpenModal(stake.amount)}
               >
                 <Image
                   src={Logo}
@@ -57,7 +68,12 @@ const GameList = () => {
           </div>
         </div>
       </div>
-    </BackgroundImgWithLogo>
+      <StakeModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        stakeAmount={stakeAmount}
+      />
+    </BackgroundImgBlur>
   );
 };
 
