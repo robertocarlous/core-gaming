@@ -5,6 +5,13 @@ import BackgroundImg from "../../component/BackgroundImg";
 import Russian from "../../assets/RR_LOGO_2_1.png";
 import Logo from "../../assets/BREEVS_logo_1.png";
 import { useRouter } from "next/navigation";
+import { Open_Sans, Spline_Sans_Mono } from "next/font/google";
+
+const openSans = Open_Sans({ subsets: ["latin"], weight: ["400", "700"] });
+const splineSansMono = Spline_Sans_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 const StartScreen: React.FC = () => {
   const router = useRouter();
@@ -22,7 +29,11 @@ const StartScreen: React.FC = () => {
             alt="Russian Logo"
             className="w-[350px] z-40 xl:w-[350px] lg:w-[300px] md:w-[250px] sm:w-[200px] xs:w-[20px]"
           />
-          <span className="loading-text font-spline text-[17px] leading-[14.4px] z-40 absolute top-[73%] left-[42%]">
+          <span
+            className={`${splineSansMono.className}
+          loading-text text-[17px] leading-[14.4px] z-40 absolute top-[73%] left-[40%]
+          `}
+          >
             loading
           </span>
         </div>
@@ -38,7 +49,11 @@ const StartScreen: React.FC = () => {
           Start
           <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent rounded-full pointer-events-none"></div>
         </div>
-        <div className="text-white font-bold items-center justify-center space-x-2 z-40 ml-9 flex bottom-2 pt-[100px]">
+        <div
+          className={`${openSans.className}
+          text-white font-bold items-center justify-center space-x-2 z-40 ml-14 flex bottom-2 pt-[100px]
+          `}
+        >
           <span>Product of</span>
           <Image
             src={Logo}

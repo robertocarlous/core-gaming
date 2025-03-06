@@ -3,13 +3,14 @@
 import Image from "next/image";
 import { ReactNode } from "react";
 import Man from "../assets/RR_LOGO_1.png";
-import Russian from "../assets/RR_LOGO_2_1.png"
+import Russian from "../assets/RR_LOGO_2_1.png";
+import GlowingEffect from "@/component/GlowingEffectProps";
 
 interface BackgroundImgProps {
   children: ReactNode;
 }
 
-const BackgroundImgWithLogo: React.FC<BackgroundImgProps> = ({ children }) => {
+const BackgroundImgBlur: React.FC<BackgroundImgProps> = ({ children }) => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen  h-screen w-screen bg-[#030B1F] overflow-auto">
       <div
@@ -21,9 +22,10 @@ const BackgroundImgWithLogo: React.FC<BackgroundImgProps> = ({ children }) => {
         alt="Russian"
         className="absolute right-4 top-0 w-[200px]"
       />
+      <GlowingEffect className="right-34 top-40" />
       {children}
     </div>
   );
 };
 
-export default BackgroundImgWithLogo;
+export default BackgroundImgBlur;
