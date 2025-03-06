@@ -1,33 +1,72 @@
 [
-    {
-      "name": "Alice Johnson",
-      "tokens": 150,
-      "gamesPlayed": 20,
-      "gamesWon": 12
-    },
-    {
-      "name": "David Smith",
-      "tokens": 120,
-      "gamesPlayed": 25,
-      "gamesWon": 15
-    },
-    {
-      "name": "Emma Brown",
-      "tokens": 180,
-      "gamesPlayed": 30,
-      "gamesWon": 20
-    },
-    {
-      "name": "Michael Lee",
-      "tokens": 90,
-      "gamesPlayed": 15,
-      "gamesWon": 10
-    },
-    {
-      "name": "Sophia Wilson",
-      "tokens": 200,
-      "gamesPlayed": 40,
-      "gamesWon": 22
-    }
-  ]
-  
+  {
+    "name": "Alice Johnson",
+    "tokens": 150,
+    "gamesPlayed": 20,
+    "gamesWon": 12,
+    "image": "/images/alice.jpg"
+  },
+  {
+    "name": "David Smith",
+    "tokens": 120,
+    "gamesPlayed": 25,
+    "gamesWon": 15,
+    "image": "/images/david.jpg"
+  },
+  {
+    "name": "Emma Brown",
+    "tokens": 180,
+    "gamesPlayed": 30,
+    "gamesWon": 20,
+    "image": "/images/emma.jpg"
+  },
+  {
+    "name": "Michael Lee",
+    "tokens": 90,
+    "gamesPlayed": 15,
+    "gamesWon": 10,
+    "image": "/images/michael.jpg"
+  },
+  {
+    "name": "Sophia Wilson",
+    "tokens": 200,
+    "gamesPlayed": 40,
+    "gamesWon": 22,
+    "image": "/images/sophia.jpg"
+  },
+  {
+    "name": "James Anderson",
+    "tokens": 175,
+    "gamesPlayed": 35,
+    "gamesWon": 19,
+    "image": "/images/james.jpg"
+  },
+  {
+    "name": "Olivia Taylor",
+    "tokens": 160,
+    "gamesPlayed": 28,
+    "gamesWon": 16,
+    "image": "/images/olivia.jpg"
+  },
+  {
+    "name": "Benjamin Clark",
+    "tokens": 110,
+    "gamesPlayed": 22,
+    "gamesWon": 13,
+    "image": "/images/benjamin.jpg"
+  },
+  {
+    "name": "Charlotte Martinez",
+    "tokens": 140,
+    "gamesPlayed": 26,
+    "gamesWon": 17,
+    "image": "/images/charlotte.jpg"
+  },
+  {
+    "name": "Liam Walker",
+    "tokens": 190,
+    "gamesPlayed": 38,
+    "gamesWon": 21,
+    "image": "/images/liam.jpg"
+  }
+]
