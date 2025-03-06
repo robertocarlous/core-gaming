@@ -1,7 +1,7 @@
 "use client";
 
 import BackgroundImgWithLogo from "@/component/BackgroundImgWithLogo";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import WalletDisplay from "@/component/WalletDisplay";
 import { Open_Sans } from "next/font/google";
 
 const openSans = Open_Sans({ subsets: ["latin"], weight: ["400", "700"] });
@@ -9,8 +9,8 @@ const openSans = Open_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 const Wallet: React.FC = () => {
   return (
     <BackgroundImgWithLogo>
-      <div className="custom-connect mb-[50px]">
-        <ConnectButton />
+      <div className="mb-[50px]">
+        <WalletDisplay />
       </div>
 
       <div

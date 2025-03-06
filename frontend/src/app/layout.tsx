@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ConnectWallet from "@/component/RainbowKit";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css"; // Prevents Flash of Unstyled Content (FOUC)
+config.autoAddCss = false; // Disable automatic CSS injection
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
