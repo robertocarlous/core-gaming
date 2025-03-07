@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Alice Johnson",
+    "tokens": 1.5,
+    "gamesPlayed": 20,
+    "gamesWon": 12,
+    "image": "/images/alice.jpg"
+  },
+  {
+    "name": "David Smith",
+    "tokens": 1.2,
+    "gamesPlayed": 25,
+    "gamesWon": 15,
+    "image": "/images/david.jpg"
+  },
+  {
+    "name": "Emma Brown",
+    "tokens": 1.8,
+    "gamesPlayed": 30,
+    "gamesWon": 20,
+    "image": "/images/emma.jpg"
+  },
+  {
+    "name": "Michael Lee",
+    "tokens": 0.9,
+    "gamesPlayed": 15,
+    "gamesWon": 10,
+    "image": "/images/michael.jpg"
+  },
+  {
+    "name": "Sophia Wilson",
+    "tokens": 2.2,
+    "gamesPlayed": 40,
+    "gamesWon": 22,
+    "image": "/images/sophia.jpg"
+  },
+  {
+    "name": "James Anderson",
+    "tokens": 1.7,
+    "gamesPlayed": 35,
+    "gamesWon": 19,
+    "image": "/images/james.jpg"
+  },
+  {
+    "name": "Olivia Taylor",
+    "tokens": 1.6,
+    "gamesPlayed": 28,
+    "gamesWon": 16,
+    "image": "/images/olivia.jpg"
+  },
+  {
+    "name": "Benjamin Clark",
+    "tokens": 1.1,
+    "gamesPlayed": 22,
+    "gamesWon": 13,
+    "image": "/images/benjamin.jpg"
+  },
+  {
+    "name": "Charlotte Martinez",
+    "tokens": 1.4,
+    "gamesPlayed": 26,
+    "gamesWon": 17,
+    "image": "/images/charlotte.jpg"
+  },
+  {
+    "name": "Liam Walker",
+    "tokens": 1.9,
+    "gamesPlayed": 38,
+    "gamesWon": 21,
+    "image": "/images/liam.jpg"
+  }
+]
