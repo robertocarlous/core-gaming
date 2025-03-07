@@ -1,21 +1,21 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Gamepad2, Trophy, Wallet } from "lucide-react";
+import { Home, Gamepad2, BarChart2, Wallet } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
 
   const navItems = [
-    { href: "/Home", label: "Home", icon: Home },
-    { href: "/GameScreen", label: "Game", icon: Gamepad2 },
-    { href: "/Leaderboard", label: "Leaderboard", icon: Trophy },
-    { href: "/Wallet", label: "Wallet", icon: Wallet },
+    { href: "/Home", icon: Home },
+    { href: "/GameScreen", icon: Gamepad2 },
+    { href: "/Leaderboard", icon: BarChart2 },
+    { href: "/Wallet", icon: Wallet },
   ];
 
   return (
     <nav className="fixed bottom-0 w-full bg-[#121232] p-4 flex justify-around text-white">
-      {navItems.map(({ href, label, icon: Icon }) => (
+      {navItems.map(({ href, icon: Icon }) => (
         <Link
           key={href}
           href={href}
@@ -24,7 +24,7 @@ export default function Navbar() {
           }`}
         >
           <Icon size={24} />
-          <span className="text-xs">{label}</span>
+          {/* <span className="text-xs">{label}</span> */}
         </Link>
       ))}
     </nav>
