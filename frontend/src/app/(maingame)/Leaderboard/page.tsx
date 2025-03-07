@@ -52,18 +52,20 @@ const PlayersList: React.FC = () => {
                   <Image
                     src={player.image}
                     alt={player.name}
+                    width={48} // Set an appropriate width
+                    height={48} // Set an appropriate height
                     className="w-12 h-12 rounded-full border-2 border-yellow-700 object-cover"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = "/images/placeholder.jpg";
+                      (e.target as HTMLImageElement).src =
+                        "/images/placeholder.jpg";
                     }}
                   />
                 </td>
-
                 {/* Column 3: Name + Tokens */}
                 <td className="pl-4">
                   <div className="font-bold">{player.name}</div>
                   <div className="text-[11px] italic">
-                    <span className="text-white font-bold">Token won</span> 
+                    <span className="text-white font-bold">Token won</span>
                     <span className="text-gray-400 ml-1">{player.tokens}</span>
                   </div>
                 </td>
@@ -71,15 +73,18 @@ const PlayersList: React.FC = () => {
                 {/* Column 4: Games Played + Games Won */}
                 <td className="pl-2 text-xs text-right leading-tight">
                   <div>
-                    <span className="text-gray-400 font-bold">Played</span> 
-                    <span className="text-white-400 ml-1">{player.gamesPlayed}</span>
+                    <span className="text-gray-400 font-bold">Played</span>
+                    <span className="text-white-400 ml-1">
+                      {player.gamesPlayed}
+                    </span>
                   </div>
                   <div className="text-[11px]">
-                    <span className="text-gray-400 font-bold">Wins</span> 
-                    <span className="text-white-400 ml-1">{player.gamesWon}</span>
+                    <span className="text-gray-400 font-bold">Wins</span>
+                    <span className="text-white-400 ml-1">
+                      {player.gamesWon}
+                    </span>
                   </div>
                 </td>
-
               </tr>
             ))}
           </tbody>
