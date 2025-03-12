@@ -15,18 +15,25 @@ export default function Navbar() {
 
   return (
     <nav className="fixed bottom-0 w-full bg-[#121232] p-4 flex justify-around text-white">
-      {navItems.map(({ href, icon: Icon }) => (
-        <Link
-          key={href}
-          href={href}
-          className={`flex flex-col items-center gap-1 ${
-            pathname === href ? "text-blue-500" : "text-gray-400"
-          }`}
-        >
-          <Icon size={24} />
-          {/* <span className="text-xs">{label}</span> */}
-        </Link>
-      ))}
+      {navItems.map(({ href, icon: Icon }) => {
+        const isActive = pathname === href;
+
+        return (
+          <Link
+            key={href}
+            href={href}
+            className={`relative flex flex-col items-center gap-1 ${
+              isActive ? "text-white" : "text-gray-400"
+            }`}
+          >
+            <Icon size={24} />
+            {isActive && (
+              <div className="absolute bottom-[-15px] w-6 h-2 bg-red-500 rounded-full blur-[6px]" />
+
+            )}
+          </Link>
+        );
+      })}
     </nav>
   );
 }
