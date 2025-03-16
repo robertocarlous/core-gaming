@@ -101,7 +101,7 @@ const PlayersList: React.FC = () => {
             </tbody>
           </table>
         </div>
-
+        
       </div>
     </BackgroundImgBlur>
   );
