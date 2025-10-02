@@ -17,6 +17,7 @@ const StartScreen: React.FC = () => {
   const router = useRouter();
 
   const handleStart = () => {
+    console.log("Start button clicked");
     router.push("/Home");
   };
 

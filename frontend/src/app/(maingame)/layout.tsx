@@ -1,9 +1,9 @@
-import Navbar from '@/component/Navbar';
-import React from 'react'
+import Navbar from "@/component/Navbar";
+import React from "react";
 
 type Props = {
-    children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 const layout = ({ children }: Props) => {
   return (
@@ -12,6 +12,6 @@ const layout = ({ children }: Props) => {
       <Navbar />
     </div>
   );
-}
+};
 
-export default layout
+export default layout;

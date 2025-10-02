@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ReactNode } from "react";
 import Man from "../assets/RR_LOGO_1.png";
-import Russian from "../assets/RR_LOGO_2_1.png"
+import Russian from "../assets/RR_LOGO_2_1.png";
 
 interface BackgroundImgProps {
   children: ReactNode;

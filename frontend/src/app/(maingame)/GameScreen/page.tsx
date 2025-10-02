@@ -4,8 +4,13 @@ import BackgroundImgBlur from "@/component/BackgroundBlur";
 import React, { useState, useEffect } from "react";
 import { Open_Sans } from "next/font/google";
 import { motion } from "framer-motion";
-import { useAccount, useWriteContract, useReadContract, useWaitForTransactionReceipt } from "wagmi";
-import { GameContract } from "../../../component/index";
+import {
+  useAccount,
+  useWriteContract,
+  useReadContract,
+  useWaitForTransactionReceipt,
+} from "wagmi";
+import { GameContract } from "@/component/index";
 
 const openSans = Open_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -18,13 +23,7 @@ const addresses = [
   "0xE5F6G7H8I9J0K1L2M3N4O5P6Q7R8S9T1A2B3C4D",
 ];
 
-const winnings = [
-  "122 CORE",
-  "250 CORE",
-  "75 CORE",
-  "300 CORE",
-  "150 CORE",
-];
+const winnings = ["122 CORE", "250 CORE", "75 CORE", "300 CORE", "150 CORE"];
 
 interface Player {
   name: string;
@@ -49,24 +48,27 @@ const WheelOfFortune: React.FC<WheelOfFortuneProps> = ({ gameId = 0 }) => {
   const { writeContractAsync } = useWriteContract();
 
   // Read game data from contract
-  const { data: gameStatus, refetch: refetchGameStatus } = useReadContract({
+  const { data: gameStatusRaw, refetch: refetchGameStatus } = useReadContract({
     address: GameContract.address as `0x${string}`,
     abi: GameContract.abi,
-    functionName: 'getGameStatus',
+    functionName: "getGameStatus",
     args: [BigInt(gameId)],
   });
+
+  const gameStatus = gameStatusRaw as [bigint, bigint, number] | undefined;
 
   const { data: gamePlayers, refetch: refetchPlayers } = useReadContract({
     address: GameContract.address as `0x${string}`,
     abi: GameContract.abi,
-    functionName: 'getPlayers',
+    functionName: "getPlayers",
     args: [BigInt(gameId)],
   });
 
   // Wait for spin transaction
-  const { isLoading: isSpinPending, isSuccess: isSpinSuccess } = useWaitForTransactionReceipt({
-    hash: spinTxHash,
-  });
+  const { isLoading: isSpinPending, isSuccess: isSpinSuccess } =
+    useWaitForTransactionReceipt({
+      hash: spinTxHash as `0x${string}`,
+    });
 
   // Update spinning state based on transaction
   useEffect(() => {
@@ -83,16 +85,23 @@ const WheelOfFortune: React.FC<WheelOfFortuneProps> = ({ gameId = 0 }) => {
   // Convert contract players to UI format
   useEffect(() => {
     if (gamePlayers && Array.isArray(gamePlayers)) {
-      const formattedPlayers: Player[] = gamePlayers.map((playerAddress: string, index: number) => ({
-        name: `Player ${index + 1}`,
-        address: playerAddress,
-        status: "Still in" as const,
-      }));
-      
+      const formattedPlayers: Player[] = gamePlayers.map(
+        (playerAddress: string, index: number) => ({
+          name: `Player ${index + 1}`,
+          address: playerAddress,
+          status: "Still in" as const,
+        })
+      );
+
       setPlayers(formattedPlayers);
-      
+
       // Check if game has ended (only 1 player left)
-      if (formattedPlayers.length === 1 && gameStatus && Array.isArray(gameStatus) && gameStatus[2] === 2) {
+      if (
+        formattedPlayers.length === 1 &&
+        gameStatus &&
+        Array.isArray(gameStatus) &&
+        gameStatus[2] === 2
+      ) {
         setWinner(formattedPlayers[0].name);
       }
     }
@@ -109,12 +118,12 @@ const WheelOfFortune: React.FC<WheelOfFortuneProps> = ({ gameId = 0 }) => {
 
   const spinWheel = async () => {
     if (isSpinning || winner || !isConnected) return;
-    
+
     setError(null);
 
     try {
       // Check if game is in progress
-      if (!gameStatus || !Array.isArray(gameStatus) || gameStatus[2] !== 1) { 
+      if (!gameStatus || !Array.isArray(gameStatus) || gameStatus[2] !== 1) {
         setError("Game is not in progress");
         return;
       }
@@ -129,9 +138,9 @@ const WheelOfFortune: React.FC<WheelOfFortuneProps> = ({ gameId = 0 }) => {
 
       // Start visual spinning immediately
       setIsSpinning(true);
-      
+
       // Visual spinning effect
-      const remainingPlayers = players.filter(p => p.status === "Still in");
+      const remainingPlayers = players.filter((p) => p.status === "Still in");
       const randomIndex = Math.floor(Math.random() * remainingPlayers.length);
       const anglePerSegment = 360 / remainingPlayers.length;
       const additionalRotation = 360 * 10 + randomIndex * anglePerSegment;
@@ -156,13 +165,12 @@ const WheelOfFortune: React.FC<WheelOfFortuneProps> = ({ gameId = 0 }) => {
       const hash = await writeContractAsync({
         address: GameContract.address as `0x${string}`,
         abi: GameContract.abi,
-        functionName: 'spinRoulette',
+        functionName: "spinRoulette",
         args: [BigInt(gameId)],
       });
 
       console.log("Spin transaction submitted:", hash);
       setSpinTxHash(hash);
-
     } catch (err) {
       console.error("Spin error:", err);
       setIsSpinning(false);
@@ -176,27 +184,26 @@ const WheelOfFortune: React.FC<WheelOfFortuneProps> = ({ gameId = 0 }) => {
 
   const startGame = async () => {
     if (!isConnected) return;
-    
+
     setError(null);
 
     try {
       console.log("Starting game:", gameId);
-      
+
       const hash = await writeContractAsync({
         address: GameContract.address as `0x${string}`,
         abi: GameContract.abi,
-        functionName: 'startGame',
+        functionName: "startGame",
         args: [BigInt(gameId)],
       });
 
       console.log("Start game transaction submitted:", hash);
-      
+
       // Refetch game status after transaction
       setTimeout(() => {
         refetchGameStatus();
         refetchPlayers();
       }, 2000);
-
     } catch (err) {
       console.error("Start game error:", err);
       if (err instanceof Error) {
@@ -209,31 +216,39 @@ const WheelOfFortune: React.FC<WheelOfFortuneProps> = ({ gameId = 0 }) => {
 
   const getGameStatusText = () => {
     if (!gameStatus || !Array.isArray(gameStatus)) return "Loading...";
-    
+
     const status = gameStatus[2];
     switch (status) {
-      case 0: return "Waiting for Players";
-      case 1: return "In Progress";
-      case 2: return "Game Ended";
-      default: return "Unknown";
+      case 0:
+        return "Waiting for Players";
+      case 1:
+        return "In Progress";
+      case 2:
+        return "Game Ended";
+      default:
+        return "Unknown";
     }
   };
 
   const canStartGame = () => {
-    return gameStatus && 
-           Array.isArray(gameStatus) &&
-           gameStatus[2] === 0 && // GameStatus.Active
-           players.length === 5 && 
-           isConnected;
+    return (
+      gameStatus &&
+      Array.isArray(gameStatus) &&
+      gameStatus[2] === 0 && // GameStatus.Active
+      players.length === 5 &&
+      isConnected
+    );
   };
 
   const canSpin = () => {
-    return gameStatus && 
-           Array.isArray(gameStatus) &&
-           gameStatus[2] === 1 && // GameStatus.InProgress
-           players.length > 1 && 
-           isConnected && 
-           !isSpinning;
+    return (
+      gameStatus &&
+      Array.isArray(gameStatus) &&
+      gameStatus[2] === 1 && // GameStatus.InProgress
+      players.length > 1 &&
+      isConnected &&
+      !isSpinning
+    );
   };
 
   return (
@@ -267,11 +282,19 @@ const WheelOfFortune: React.FC<WheelOfFortuneProps> = ({ gameId = 0 }) => {
         {/* Player List and Game Info on the Left */}
         <div className="text-white p-4 flex flex-col backdrop-blur-xs">
           <h2 className="text-xl font-bold mb-2">Game #{gameId}</h2>
-          <p className="text-sm text-gray-300 mb-4">Status: {getGameStatusText()}</p>
-          
+          <p className="text-sm text-gray-300 mb-4">
+            Status: {getGameStatusText()}
+          </p>
+
           {gameStatus && Array.isArray(gameStatus) && (
             <div className="mb-4 text-sm">
-              <p>Stake Amount: {gameStatus[1] ? (Number(gameStatus[1]) / 10**18).toFixed(4) : "0"} CORE</p>
+              <p>
+                Stake Amount:{" "}
+                {gameStatus[1]
+                  ? (Number(gameStatus[1]) / 10 ** 18).toFixed(4)
+                  : "0"}{" "}
+                CORE
+              </p>
               <p>Players: {players.length}/5</p>
             </div>
           )}
@@ -348,8 +371,8 @@ const WheelOfFortune: React.FC<WheelOfFortuneProps> = ({ gameId = 0 }) => {
           >
             <div
               className={`absolute w-20 h-20 rounded-full flex items-center justify-center font-bold text-lg shadow-lg z-10 cursor-pointer ${
-                canSpin() 
-                  ? "bg-white text-black hover:bg-gray-200" 
+                canSpin()
+                  ? "bg-white text-black hover:bg-gray-200"
                   : "bg-gray-600 text-gray-400 cursor-not-allowed"
               }`}
               onClick={spinWheel}

@@ -9,9 +9,16 @@ export default function Navbar() {
   const navItems = [
     { href: "/Home", icon: Home },
     { href: "/GameScreen", icon: Gamepad2 },
-    { href: "/Leaderboard", icon: BarChart2 },
+    { href: "/LeaderBoard", icon: BarChart2 },
     { href: "/Wallet", icon: Wallet },
   ];
+
+  // const navItems = [
+  //   { href: "/home", icon: Home },
+  //   { href: "/gamescreen", icon: Gamepad2 },
+  //   { href: "/leaderboard", icon: BarChart2 },
+  //   { href: "/wallet", icon: Wallet },
+  // ];
 
   return (
     <nav className="fixed bottom-0 w-full bg-[#121232] p-4 flex justify-around text-white">
@@ -29,7 +36,6 @@ export default function Navbar() {
             <Icon size={24} />
             {isActive && (
               <div className="absolute bottom-[-15px] w-6 h-2 bg-red-500 rounded-full blur-[6px]" />
-
             )}
           </Link>
         );
